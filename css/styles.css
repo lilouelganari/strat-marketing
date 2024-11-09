@@ -1,0 +1,361 @@
+/* Réinitialisation des marges et padding pour tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Styles pour les écrans de téléphone (moins de 768px de largeur) */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .navbar .logo img {
+        height: 30px; /* Réduire la taille du logo */
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+    }
+
+    /* Vidéo de bannière */
+    .video-banner {
+        height: 50vh; /* Réduire la hauteur de la bannière sur mobile */
+    }
+
+    .banner-content h1 {
+        font-size: 2em; /* Réduire la taille du titre */
+    }
+
+    .banner-content p {
+        font-size: 1em;
+    }
+
+    /* Sections */
+    section {
+        padding: 40px 10px; /* Réduire le padding autour des sections */
+    }
+
+    /* Style pour les images dans la section produits */
+    .product-image {
+        width: 80%; /* Réduire la taille de l'image */
+        margin: 0 auto; /* Centrer les images */
+    }
+
+    /* Section Notre Histoire */
+    .history-banner {
+        max-height: 200px; /* Réduire la hauteur de la bannière vidéo */
+    }
+
+    .history-content h2 {
+        font-size: 1.5em; /* Réduire la taille du texte */
+    }
+
+    .history-content p {
+        font-size: 1em;
+    }
+
+    /* Carrousel des avis */
+    .testimonial-carousel {
+        padding: 20px; /* Réduire le padding du carrousel */
+    }
+
+    /* Pied de page */
+    footer {
+        padding: 15px;
+    }
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Navbar transparente */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Pour être au-dessus de la vidéo */
+}
+
+/* Logo */
+.navbar .logo img {
+    height: 50px;
+}
+
+/* Liens de la navbar */
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.navbar .logo img:hover {
+    transform: rotate(360deg);
+    transition: transform 0.6s ease;
+}
+
+
+/* Bannière vidéo */
+.video-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* La vidéo prend 100% de la hauteur du viewport */
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* La vidéo remplit tout l'espace de la bannière */
+    object-fit: cover;
+    z-index: -1; /* Vidéo derrière le contenu */
+    border: 8px solid rgba(255, 255, 255, 0.5); /* Bordure futuriste */
+    border-radius: 15px; /* Coins arrondis */
+}
+
+/* Contenu de la bannière */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1; /* Contenu au-dessus de la vidéo */
+}
+
+.banner-content h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Sections principales */
+main {
+    padding: 20px;
+    margin-top: 100vh; /* Déplace le contenu principal sous la vidéo */
+}
+
+/* Espacement des sections */
+section {
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 20px; /* Espacement entre les sections */
+}
+
+/* Style spécifique aux sections */
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.testimonial-carousel {
+    display: flex;
+    overflow: hidden; /* Masque les éléments en dehors de la zone visible */
+    width: 100%;
+    position: relative;
+}
+
+.testimonial-slide {
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    font-size: 1.2em;
+    opacity: 0; /* On masque l'élément au départ pour utiliser une transition */
+    transition: opacity 1s ease-in-out;
+}
+
+
+.testimonial-carousel {
+    display: flex;
+    animation: slide 120s infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    33% {
+        transform: translateX(-100%);
+    }
+    66% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+.testimonial-carousel .testimonial-slide:nth-child(1) {
+    opacity: 1;
+}
+
+.testimonial-carousel .testimonial-slide:nth-child(2) {
+    opacity: 0;
+}
+
+.testimonial-carousel .testimonial-slide:nth-child(3) {
+    opacity: 0;
+}
+
+.testimonial-carousel .testimonial-slide {
+    opacity: 0;
+    animation: fade 15s infinite;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    40% { opacity: 0; }
+    60% { opacity: 0; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* Style de l'accordéon */
+.accordion {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; /* Bordures arrondies pour un effet plus moderne */
+}
+
+/* Couleur verte transparente au survol */
+.accordion:hover {
+    background-color: rgba(0, 128, 0, 0.3); /* Vert avec transparence */
+    color: white; /* Change la couleur du texte quand on survole */
+}
+
+/* Style des panels (contenu caché) */
+.panel {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    transition: max-height 0.2s ease-out;
+    border-top: 1px solid #ccc;
+}
+/* Section "Notre Histoire" */
+.ourstory {
+    padding: 0;
+    margin: 50px 0;
+    position: relative;
+}
+
+.story-banner {
+    position: relative;
+    width: 90%; /* Réduire la largeur pour créer un effet de bordure */
+    height: 400px; /* Ajuster la hauteur selon tes préférences */
+    margin: 0 auto; /* Centrer la bannière */
+    overflow: hidden;
+    border-radius: 15px; /* Bordure arrondie pour un effet moderniste */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre pour l’effet de profondeur */
+    border: 3px solid rgba(255, 255, 255, 0.2); /* Bordure translucide */
+}
+
+.story-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.9; /* Transparence légère pour un effet moderne */
+    filter: brightness(80%); /* Assombrir légèrement pour un meilleur contraste avec le texte */
+}
+
+.story-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4); /* Arrière-plan translucide pour le texte */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Effet de flou pour le fond du texte */
+}
+
+.story-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.story-content p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+.product-image {
+    width: 50%; 
+    max-width: 300px; 
+    display: block;
+    margin: 20px auto; 
+    border-radius: 15px; 
+    opacity: 0.8; 
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+
+.product-image:hover {
+    transform: scale(1.05); 
+    opacity: 1; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
